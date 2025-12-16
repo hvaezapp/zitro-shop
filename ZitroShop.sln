@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZitroShop.Modules", "src\ZitroShop.Modules\ZitroShop.Modules.csproj", "{58282394-4E75-44B3-ACE8-AE58C4A8107A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZitroShop.Api", "src\ZitroShop.Api\ZitroShop.Api.csproj", "{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{58282394-4E75-44B3-ACE8-AE58C4A8107A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58282394-4E75-44B3-ACE8-AE58C4A8107A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58282394-4E75-44B3-ACE8-AE58C4A8107A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{58282394-4E75-44B3-ACE8-AE58C4A8107A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{907052F2-5710-4D4C-A8A2-3FF5ADDBC83E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {517830DE-6418-4210-8E2E-21E1FB27B744}

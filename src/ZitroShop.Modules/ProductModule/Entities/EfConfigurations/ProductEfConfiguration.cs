@@ -8,7 +8,7 @@ public class ProductEfConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> builder)
     {
-        builder.ToTable(ProductDbContextSchema.Product.TableName);
+        builder.ToTable(ProductModuleDbContextSchema.Product.TableName);
 
         builder.HasKey(x => x.Id);
 
@@ -22,7 +22,7 @@ public class ProductEfConfiguration : IEntityTypeConfiguration<Product>
 
         builder.Property(x => x.Price)
                   .IsRequired(true)
-                  .HasColumnType(ProductDbContextSchema.DefaultDecimalColumnType);
+                  .HasColumnType(ProductModuleDbContextSchema.DefaultDecimalColumnType);
 
     }
 }
