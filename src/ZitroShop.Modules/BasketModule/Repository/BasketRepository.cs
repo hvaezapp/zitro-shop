@@ -1,11 +1,12 @@
 ﻿using StackExchange.Redis;
 using System.Text.Json;
+using ZitroShop.Modules.BasketModule.Contracts;
 using ZitroShop.Modules.BasketModule.Models;
 using ZitroShop.Shared.Infrastructure.Redis;
 
 namespace ZitroShop.Modules.BasketModule.Repository;
 
-public class BasketRepository
+public class BasketRepository : IBasketRepository
 {
     private readonly IDatabase _redis;
     private static readonly TimeSpan BasketTtl = TimeSpan.FromMinutes(10);
@@ -29,7 +30,12 @@ public class BasketRepository
                           BasketTtl);
     }
 
+    public async Task Delete(long userId)
+    {
+        await _redis.KeyDeleteAsync(BasketKey(userId));
+    }
+
     private static string BasketKey(long userId)
-                => $"Basket:{userId}";
+            => $"Basket:{userId}";
 
 }

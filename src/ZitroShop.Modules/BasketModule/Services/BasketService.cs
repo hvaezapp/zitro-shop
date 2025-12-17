@@ -7,12 +7,12 @@ namespace ZitroShop.Modules.BasketModule.Services;
 
 public class BasketService : IBasketService
 {
-    private readonly BasketRepository _basketRepository;
-    private readonly LockService _lockService;
+    private readonly IBasketRepository _basketRepository;
+    private readonly ILockService _lockService;
     private readonly IProductService _productService;
 
-    public BasketService(BasketRepository basketRepository,
-                         LockService lockService,
+    public BasketService(IBasketRepository basketRepository,
+                         ILockService lockService,
                          IProductService productService)
     {
         _basketRepository = basketRepository;

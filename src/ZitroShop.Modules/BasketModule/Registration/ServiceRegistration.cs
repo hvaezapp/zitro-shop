@@ -10,8 +10,8 @@ public static class ServiceRegistration
     public static IServiceCollection RegisterBasketModuleServices(this IServiceCollection services)
     {
         services.AddScoped<IBasketService, BasketService>();
-        services.AddScoped<LockService>();
-        services.AddScoped<BasketRepository>();
+        services.AddScoped<ILockService, LockService>();
+        services.AddScoped<IBasketRepository, BasketRepository>();
 
         return services;
     }

@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using ZitroShop.Modules.BasketModule.Repository;
+using ZitroShop.Modules.BasketModule.Contracts;
 using ZitroShop.Modules.PaymentModule.Contracts;
 using ZitroShop.Modules.PaymentModule.DTOs;
 using ZitroShop.Modules.PaymentModule.Entities;
@@ -13,22 +13,22 @@ public class PaymentService : IPaymentService
 {
     private readonly PaymentModuleDbContext _context;
     private readonly IPublishEndpoint _publisher;
-    private readonly BasketRepository _basketRepo;
+    private readonly IBasketRepository _basketRepository;
 
     public PaymentService(PaymentModuleDbContext context,
                           IPublishEndpoint publisher,
-                          BasketRepository basketRepo)
+                          IBasketRepository basketRepository)
     {
         _context = context;
         _publisher = publisher;
-        _basketRepo = basketRepo;
+        _basketRepository = basketRepository;
     }
 
     public async Task<StartPaymentResultDto> Start(long userId, CancellationToken ct)
     {
         try
         {
-            var basket = await _basketRepo.GetAsync(userId);
+            var basket = await _basketRepository.GetAsync(userId);
             if (basket is null || !basket.Items.Any())
                 throw new InvalidOperationException("Basket is empty.");
 
