@@ -1,4 +1,4 @@
-﻿using ZitroShop.Modules.ProductModule.Common;
+﻿using ZitroShop.Shared.Common;
 
 namespace ZitroShop.Modules.ProductModule.Entities;
 

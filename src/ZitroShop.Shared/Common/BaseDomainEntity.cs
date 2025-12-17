@@ -1,4 +1,4 @@
-﻿namespace ZitroShop.Modules.ProductModule.Common;
+﻿namespace ZitroShop.Shared.Common;
 
 public class BaseDomain<T>
 {

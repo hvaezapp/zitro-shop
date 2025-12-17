@@ -9,15 +9,16 @@ public static class ServiceRegistration
 {
     public static IServiceCollection RegisterInfraServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // redis
+        #region redis
         services.AddSingleton<IRedisConnectionFactory>(sp =>
         {
             var connectionString = configuration.GetConnectionString("Redis")
                                    ?? throw new InvalidOperationException("Redis Config Not Found");
             return new RedisConnectionFactory(connectionString);
         });
+        #endregion
 
-        // rabbitMq
+        #region rabbitMq
         services.AddMassTransit(configure =>
         {
             var host = configuration["RabbitMqSetting:Host"]
@@ -40,6 +41,7 @@ public static class ServiceRegistration
                 cfg.ConfigureEndpoints(context);
             });
         });
+        #endregion
 
         return services;
     }
