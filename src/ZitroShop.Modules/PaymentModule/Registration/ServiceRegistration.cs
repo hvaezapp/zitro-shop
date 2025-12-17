@@ -33,13 +33,13 @@ public static class ServiceRegistration
         services.AddMassTransit(configure =>
         {
             var host = configuration["RabbitMqSetting:Host"]
-                            ?? throw new InvalidOperationException("RabbitMq Host Not Found");
+                            ?? throw new InvalidOperationException("RabbitMq Config Host Not Found");
 
             var username = configuration["RabbitMqSetting:UserName"]
-                            ?? throw new InvalidOperationException("RabbitMq UserName Not Found");
+                            ?? throw new InvalidOperationException("RabbitMq Config UserName Not Found");
 
             var password = configuration["RabbitMqSetting:Password"]
-                            ?? throw new InvalidOperationException("RabbitMq Password Not Found");
+                            ?? throw new InvalidOperationException("RabbitMq Config Password Not Found");
 
             configure.AddConsumers(Assembly.GetExecutingAssembly());
 
