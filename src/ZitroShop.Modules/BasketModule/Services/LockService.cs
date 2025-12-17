@@ -22,6 +22,6 @@ public class LockService(IRedisConnectionFactory redisFactory)
             throw new InvalidOperationException("Product is already locked.");
     }
 
-    public async Task<bool> IsLocked(long productId)
-        => await _redis.KeyExistsAsync(LockKey(productId));
+    public Task<bool> IsLocked(long productId)
+        =>  _redis.KeyExistsAsync(LockKey(productId));
 }

@@ -1,7 +1,7 @@
 ﻿using ZitroShop.Modules.BasketModule.Contracts;
 using ZitroShop.Modules.BasketModule.Models;
 using ZitroShop.Modules.BasketModule.Repository;
-using ZitroShop.Modules.ProductModule.Services;
+using ZitroShop.Modules.ProductModule.Contracts;
 
 namespace ZitroShop.Modules.BasketModule.Services;
 
@@ -9,11 +9,11 @@ public class BasketService : IBasketService
 {
     private readonly BasketRepository _basketRepository;
     private readonly LockService _lockService;
-    private readonly ProductService _productService;
+    private readonly IProductService _productService;
 
     public BasketService(BasketRepository basketRepository,
                          LockService lockService,
-                         ProductService productService)
+                         IProductService productService)
     {
         _basketRepository = basketRepository;
         _lockService = lockService;
@@ -22,7 +22,7 @@ public class BasketService : IBasketService
 
     public async Task<bool> AddProduct(long userId, long productId, CancellationToken ct)
     {
-        if (await _productService.IsSold(productId , ct))
+        if (await _productService.IsSold(productId, ct))
             throw new InvalidOperationException("Product is solded.");
 
         await _lockService.Lock(productId);

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZitroShop.Api.Contracts.Basket;
+using ZitroShop.Api.Dtos.Basket;
 using ZitroShop.Modules.BasketModule.Contracts;
 
 namespace ZitroShop.Api.Controllers;
@@ -17,9 +17,9 @@ public class BasketController : ControllerBase
 
 
     [HttpPost("add")]
-    public async Task<ActionResult<bool>> Add(AddToBasketRequest request , CancellationToken ct)
+    public async Task<ActionResult<bool>> Add(AddToBasketRequestDto request , CancellationToken ct)
     {
-        var result = await _basketService.AddProduct(request.UserId , request.ProductId , ct);
+        var result = await _basketService.AddProduct(request.UserId,request.ProductId,ct);
         return Ok(result);
     }
 }
