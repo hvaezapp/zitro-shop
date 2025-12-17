@@ -4,7 +4,7 @@ using ZitroShop.Modules.BasketModule.Repository;
 using ZitroShop.Modules.PaymentModule.Contracts;
 using ZitroShop.Modules.PaymentModule.DTOs;
 using ZitroShop.Modules.PaymentModule.Entities;
-using ZitroShop.Modules.PaymentModule.EventModel;
+using ZitroShop.Modules.PaymentModule.EventModels;
 using ZitroShop.Modules.PaymentModule.Persistence.Context;
 
 namespace ZitroShop.Modules.PaymentModule.Services;
@@ -29,7 +29,7 @@ public class PaymentService : IPaymentService
         try
         {
             var basket = await _basketRepo.GetAsync(userId);
-            if (basket == null || !basket.Items.Any())
+            if (basket is null || !basket.Items.Any())
                 throw new InvalidOperationException("Basket is empty.");
 
             var payment = Payment.Create(userId, basket.Items.Sum(s => s.Price));
@@ -52,7 +52,7 @@ public class PaymentService : IPaymentService
         var payment = await _context.Payments.FirstOrDefaultAsync(a => a.Id == paymentId, ct);
 
         if (payment is null)
-            throw new KeyNotFoundException("Payment not found.");
+            throw new InvalidOperationException("Payment not found.");
 
         return new PaymentStatusDto(payment.Id, payment.Status.ToString());
     }

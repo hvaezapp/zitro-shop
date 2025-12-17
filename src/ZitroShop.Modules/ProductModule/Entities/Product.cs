@@ -8,6 +8,8 @@ public class Product : BaseDomainEntity
     public string Description { get; private set; } = null!;
     public decimal Price { get; private set; }
     public bool IsSold { get; private set; }
+
+    public void Sold() => IsSold = true;
 }
 
 

@@ -19,6 +19,9 @@ public class Payment : BaseDomainEntity
         };
     }
 
+    public void Succeed()=> Status = PaymentStatus.Succeeded;
+    public void Failed() => Status = PaymentStatus.Failed;
+
     private Payment()
     {
 

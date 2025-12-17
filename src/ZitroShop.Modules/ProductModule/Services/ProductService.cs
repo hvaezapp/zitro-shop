@@ -18,4 +18,16 @@ public class ProductService(ProductModuleDbContext dbContext) : IProductService
     {
         return _dbContext.Products.AnyAsync(x => x.Id == productId && x.IsSold, ct);
     }
+
+    public async Task SetAsSold(long productId, CancellationToken ct)
+    {
+        var product = await GetById(productId, ct);
+        if (product is null)
+            throw new InvalidOperationException($"Product not found.");
+
+        product.Sold();
+
+        _dbContext.Products.Update(product);
+        await _dbContext.SaveChangesAsync(ct);
+    }
 }
