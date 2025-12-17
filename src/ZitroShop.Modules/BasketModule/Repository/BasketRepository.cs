@@ -18,7 +18,7 @@ public class BasketRepository
     public async Task<Basket?> GetAsync(long userId)
     {
         var data = await _redis.StringGetAsync(BasketKey(userId));
-        return data.HasValue? JsonSerializer.Deserialize<Basket>(data!): null;
+        return data.HasValue ? JsonSerializer.Deserialize<Basket>(data!): null;
     }
 
     public Task<bool> SaveAsync(Basket basket)

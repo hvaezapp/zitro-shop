@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZitroShop.Api.Dtos.Basket;
+using ZitroShop.Api.DTOs.Basket;
 using ZitroShop.Modules.BasketModule.Contracts;
 
 namespace ZitroShop.Api.Controllers;
