@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ZitroShop.Modules\ZitroShop.Modules.csproj" />
+    <ProjectReference Include="..\ZitroShop.Shared\ZitroShop.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ZitroShop.Modules.ProductModule.Persistence.Context;
+using ZitroShop.Shared.Infrastructure.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,14 @@ builder.Services.AddDbContext<ProductModuleDbContext>(options =>
             sqlOptions.MigrationsAssembly("ZitroShop.Modules");
             sqlOptions.MigrationsHistoryTable("__EFMigrationsHistory", ProductModuleDbContextSchema.DefaultSchema);
         }));
+
+
+// Redis
+builder.Services.AddSingleton<IRedisConnectionFactory>(sp =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Redis:ConnectionString") ?? "localhost:6379";
+    return new RedisConnectionFactory(connectionString);
+});
 
 
 builder.Services.AddOpenApi();
