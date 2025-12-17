@@ -14,6 +14,6 @@ public class PaymentModuleDbContext(DbContextOptions<PaymentModuleDbContext> opt
 
         modelBuilder.HasDefaultSchema(PaymentModuleDbContextSchema.DefaultSchema);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(PaymentModuleDbContext).Assembly);
     }
 }

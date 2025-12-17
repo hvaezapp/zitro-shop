@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using ZitroShop.Modules.ProductModule;
 using ZitroShop.Modules.ProductModule.Entities;
 
 namespace ZitroShop.Modules.ProductModule.Persistence.Context;
@@ -14,6 +15,7 @@ public class ProductModuleDbContext(DbContextOptions<ProductModuleDbContext> opt
 
         modelBuilder.HasDefaultSchema(ProductModuleDbContextSchema.DefaultSchema);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductModuleDbContext).Assembly);
+
     }
 }

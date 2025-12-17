@@ -1,18 +1,17 @@
 ﻿using Scalar.AspNetCore;
 using ZitroShop.Modules.BasketModule.Registration;
+using ZitroShop.Modules.PaymentModule.Registration;
 using ZitroShop.Modules.ProductModule.Registration;
 using ZitroShop.Shared.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
-
 
 var configuration = builder.Configuration;
 
 builder.Services.RegisterInfraServices(configuration);
 builder.Services.RegisterProductModuleServices(configuration);
 builder.Services.RegisterBasketModuleServices();
+builder.Services.RegisterPaymentModuleServices(configuration);
 
 builder.Services.AddOpenApi();
 

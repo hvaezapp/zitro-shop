@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ZitroShop.Modules.PaymentModule.Persistence.Context;
-using ZitroShop.Modules.ProductModule.Persistence.Context;
 
 namespace ZitroShop.Modules.PaymentModule.Entities.EfConfigurations;
 

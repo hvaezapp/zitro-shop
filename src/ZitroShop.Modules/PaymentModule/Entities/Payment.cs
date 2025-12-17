@@ -9,7 +9,6 @@ public class Payment : BaseDomainEntity
     public PaymentStatus Status { get; private set; }
 }
 
-
 #region enums
 public enum PaymentStatus
 {
