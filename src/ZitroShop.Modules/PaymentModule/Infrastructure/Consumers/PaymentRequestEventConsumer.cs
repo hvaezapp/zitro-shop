@@ -1,19 +1,19 @@
 ﻿using MassTransit;
 using ZitroShop.Modules.BasketModule.Contracts;
-using ZitroShop.Modules.PaymentModule.EventModels;
+using ZitroShop.Modules.PaymentModule.Infrastructure.Consumers.IntegrationEvents;
 using ZitroShop.Modules.PaymentModule.Persistence.Context;
 using ZitroShop.Modules.ProductModule.Contracts;
 
-namespace ZitroShop.Modules.PaymentModule.Consumers;
+namespace ZitroShop.Modules.PaymentModule.Infrastructure.Consumers;
 
-public class PaymentConsumer : IConsumer<PaymentRequestEvent>
+public class PaymentRequestEventConsumer : IConsumer<PaymentRequestEvent>
 {
     private readonly PaymentModuleDbContext _context;
     private readonly IBasketRepository _basketRepository;
     private readonly IProductService _productService;
     private readonly ILockService _lockService;
 
-    public PaymentConsumer(PaymentModuleDbContext context,
+    public PaymentRequestEventConsumer(PaymentModuleDbContext context,
                            IBasketRepository basketRepository,
                            IProductService productService,
                            ILockService lockService)

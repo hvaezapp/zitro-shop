@@ -4,7 +4,7 @@ using ZitroShop.Modules.BasketModule.Contracts;
 using ZitroShop.Modules.PaymentModule.Contracts;
 using ZitroShop.Modules.PaymentModule.DTOs;
 using ZitroShop.Modules.PaymentModule.Entities;
-using ZitroShop.Modules.PaymentModule.EventModels;
+using ZitroShop.Modules.PaymentModule.Infrastructure.Consumers.IntegrationEvents;
 using ZitroShop.Modules.PaymentModule.Persistence.Context;
 
 namespace ZitroShop.Modules.PaymentModule.Services;
@@ -43,7 +43,7 @@ public class PaymentService : IPaymentService
         }
         catch (Exception ex)
         {
-            throw new ApplicationException("Payment start failed.", ex);
+            throw new InvalidOperationException("Payment start failed.", ex);
         }
     }
 

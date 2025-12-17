@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using ZitroShop.Shared.Infrastructure.Redis;
 
 namespace ZitroShop.Shared.Registration;
@@ -17,36 +18,11 @@ public static class ServiceRegistration
             return new RedisConnectionFactory(connectionString);
         });
         #endregion
-
-        #region rabbitMq
-        services.AddMassTransit(configure =>
-        {
-            var host = configuration["RabbitMqSetting:Host"]
-                            ?? throw new InvalidOperationException("RabbitMq Host Not Found");
-
-            var username = configuration["RabbitMqSetting:UserName"]
-                            ?? throw new InvalidOperationException("RabbitMq UserName Not Found");
-
-            var password = configuration["RabbitMqSetting:Password"]
-                            ?? throw new InvalidOperationException("RabbitMq Password Not Found");
-
-            configure.UsingRabbitMq((context, cfg) =>
-            {
-                cfg.Host(host, hostConfigure =>
-                {
-                    hostConfigure.Username(username);
-                    hostConfigure.Password(password);
-                });
-
-                cfg.ConfigureEndpoints(context);
-            });
-        });
-        #endregion
-
+  
         return services;
     }
 
-
 }
+    
 
 

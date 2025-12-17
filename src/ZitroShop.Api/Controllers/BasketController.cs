@@ -4,9 +4,8 @@ using ZitroShop.Modules.BasketModule.Contracts;
 
 namespace ZitroShop.Api.Controllers;
 
-[ApiController]
 [Route("basket")]
-public class BasketController : ControllerBase
+public class BasketController : BaseController
 {
     private readonly IBasketService _basketService;
 
@@ -17,9 +16,9 @@ public class BasketController : ControllerBase
 
 
     [HttpPost("add")]
-    public async Task<ActionResult<bool>> Add(AddToBasketRequestDto request , CancellationToken ct)
+    public async Task<ActionResult<bool>> Add(AddToBasketRequestDto request, CancellationToken ct)
     {
-        var result = await _basketService.AddProduct(request.UserId,request.ProductId,ct);
+        var result = await _basketService.AddProduct(request.UserId, request.ProductId, ct);
         return Ok(result);
     }
 }

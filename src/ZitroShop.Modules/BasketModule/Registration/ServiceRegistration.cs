@@ -9,9 +9,11 @@ public static class ServiceRegistration
 {
     public static IServiceCollection RegisterBasketModuleServices(this IServiceCollection services)
     {
+        #region ioc
         services.AddScoped<IBasketService, BasketService>();
         services.AddScoped<ILockService, LockService>();
         services.AddScoped<IBasketRepository, BasketRepository>();
+        #endregion
 
         return services;
     }

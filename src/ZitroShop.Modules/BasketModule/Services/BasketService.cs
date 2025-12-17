@@ -23,7 +23,7 @@ public class BasketService : IBasketService
     public async Task<bool> AddProduct(long userId, long productId, CancellationToken ct)
     {
         if (await _productService.IsSold(productId, ct))
-            throw new InvalidOperationException("Product is solded.");
+            throw new InvalidOperationException("Product is sold.");
 
         await _lockService.Lock(productId);
 
