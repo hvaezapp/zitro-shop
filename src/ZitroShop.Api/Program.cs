@@ -5,8 +5,13 @@ using ZitroShop.Shared.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.RegisterInfraServices(builder.Configuration);
-builder.Services.RegisterProductModuleServices(builder.Configuration);
+
+
+
+var configuration = builder.Configuration;
+
+builder.Services.RegisterInfraServices(configuration);
+builder.Services.RegisterProductModuleServices(configuration);
 builder.Services.RegisterBasketModuleServices();
 
 builder.Services.AddOpenApi();
