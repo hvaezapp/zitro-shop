@@ -20,7 +20,7 @@ public class BasketService : IBasketService
         _productService = productService;
     }
 
-    public async Task AddProduct(long userId, long productId, CancellationToken ct)
+    public async Task<bool> AddProduct(long userId, long productId, CancellationToken ct)
     {
         if (await _productService.IsSold(productId , ct))
             throw new InvalidOperationException("Product is solded.");
@@ -40,6 +40,6 @@ public class BasketService : IBasketService
             Price = product.Price
         });
 
-        await _basketRepository.SaveAsync(basket);
+        return await _basketRepository.SaveAsync(basket);
     }
 }

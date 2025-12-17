@@ -2,5 +2,5 @@
 
 public interface IBasketService
 {
-    Task AddProduct(long userId, long productId, CancellationToken ct);
+    Task<bool> AddProduct(long userId, long productId, CancellationToken ct);
 }

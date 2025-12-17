@@ -18,17 +18,15 @@ public class BasketRepository
     public async Task<Basket?> GetAsync(long userId)
     {
         var data = await _redis.StringGetAsync(BasketKey(userId));
-        return data.HasValue
-            ? JsonSerializer.Deserialize<Basket>(data!)
-            : null;
+        return data.HasValue? JsonSerializer.Deserialize<Basket>(data!): null;
     }
 
-    public async Task SaveAsync(Basket basket)
+    public async Task<bool> SaveAsync(Basket basket)
     {
-        await _redis.StringSetAsync(
-            BasketKey(basket.UserId),
-            JsonSerializer.Serialize(basket),
-            BasketTtl);
+      return await _redis.StringSetAsync(
+                          BasketKey(basket.UserId),
+                          JsonSerializer.Serialize(basket),
+                          BasketTtl);
     }
 
     private static string BasketKey(long userId)
