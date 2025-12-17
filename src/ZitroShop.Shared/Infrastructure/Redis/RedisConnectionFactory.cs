@@ -13,6 +13,6 @@ public class RedisConnectionFactory : IRedisConnectionFactory
 
     public IDatabase GetDatabase()
     {
-        return _lazyConnection.Value.GetDatabase(); 
+        return _lazyConnection.Value.GetDatabase();
     }
 }

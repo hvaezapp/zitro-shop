@@ -19,4 +19,8 @@
     <Folder Include="ProductModule\Persistence\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ZitroShop.Shared\ZitroShop.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

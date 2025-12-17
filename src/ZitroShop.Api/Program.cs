@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ZitroShop.Modules.BasketModule.Registration;
 using ZitroShop.Modules.ProductModule.Persistence.Context;
+using ZitroShop.Modules.ProductModule.Registration;
 using ZitroShop.Shared.Infrastructure.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,9 @@ builder.Services.AddSingleton<IRedisConnectionFactory>(sp =>
     return new RedisConnectionFactory(connectionString);
 });
 
+
+builder.Services.RegisterProductModuleServices();
+builder.Services.RegisterBasketModuleServices();
 
 builder.Services.AddOpenApi();
 
