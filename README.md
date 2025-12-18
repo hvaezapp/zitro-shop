@@ -121,6 +121,4 @@ curl -X GET http://localhost:5128/payment/1
 
 ![zitro-shop Endpoints](zitro-shop-api.png)
 
-## 📜 License
-This project is licensed under the [LICENSE](LICENSE) file.
 
