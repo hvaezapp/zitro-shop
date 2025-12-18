@@ -1,4 +1,4 @@
-# ZitroShop API
+# ZitroShop
 
 ZitroShop is a modern, modular e-commerce API built with .NET 9. The project follows a **Modular Monolith** architecture, ensuring clear separation of concerns between different business domains such as Products, Basket, and Payments.
 
