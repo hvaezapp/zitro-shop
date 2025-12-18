@@ -4,7 +4,7 @@ namespace ZitroShop.Modules.BasketModule.Contracts;
 
 public interface IBasketRepository
 {
-    Task<Basket?> GetAsync(long userId);
-    Task<bool> SaveAsync(Basket basket);
+    Task<Basket?> Get(long userId);
+    Task<bool> Save(Basket basket);
     Task Delete(long userId);
 }

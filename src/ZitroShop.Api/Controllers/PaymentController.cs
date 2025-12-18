@@ -22,7 +22,7 @@ public class PaymentController : BaseController
         return Ok(result);
     }
 
-    [HttpGet("{paymentId}")]
+    [HttpGet("{paymentId:long:required}")]
     public async Task<ActionResult<PaymentStatusDto>> Status(long paymentId, CancellationToken ct)
     {
         var result = await _paymentService.GetStatus(paymentId, ct);

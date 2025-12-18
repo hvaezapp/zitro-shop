@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ZitroShop.Modules.ProductModule.Contracts;
 using ZitroShop.Modules.ProductModule.DTOs;
 

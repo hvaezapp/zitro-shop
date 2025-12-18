@@ -31,7 +31,7 @@ public class PaymentRequestEventConsumer : IConsumer<PaymentRequestEvent>
             return;
         try
         {
-            var basket = await _basketRepository.GetAsync(payment.UserId);
+            var basket = await _basketRepository.Get(payment.UserId);
             if (basket is null)
                 throw new InvalidOperationException("Basket not found.");
 

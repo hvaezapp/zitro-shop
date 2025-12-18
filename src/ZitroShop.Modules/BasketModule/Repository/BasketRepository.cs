@@ -16,13 +16,13 @@ public class BasketRepository : IBasketRepository
         _redis = redisFactory.GetDatabase();
     }
 
-    public async Task<Basket?> GetAsync(long userId)
+    public async Task<Basket?> Get(long userId)
     {
         var data = await _redis.StringGetAsync(BasketKey(userId));
         return data.HasValue ? JsonSerializer.Deserialize<Basket>(data!): null;
     }
 
-    public Task<bool> SaveAsync(Basket basket)
+    public Task<bool> Save(Basket basket)
     {
       return _redis.StringSetAsync(
                           BasketKey(basket.UserId),

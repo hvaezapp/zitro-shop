@@ -1,4 +1,5 @@
 ﻿using Scalar.AspNetCore;
+using ZitroShop.Api.Middlewares;
 using ZitroShop.Api.Registration;
 using ZitroShop.Modules.BasketModule.Registration;
 using ZitroShop.Modules.PaymentModule.Registration;
@@ -31,5 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.MapControllers();
+
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();

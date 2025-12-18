@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using ZitroShop.Api.DTOs.Basket;
+using ZitroShop.Api.Common;
 
 namespace ZitroShop.Api.DTOs.Payment.Validator;
 
@@ -9,8 +9,10 @@ public class StartPaymentRequestDtoValidator : AbstractValidator<StartPaymentReq
     public StartPaymentRequestDtoValidator()
     {
         RuleFor(x => x.UserId)
-             .GreaterThan(0)
-             .WithMessage("UserId must be greater than zero");
+               .NotEmpty()
+               .WithMessage(ValidationMessages.UserIdRequired)
+               .GreaterThan(0)
+               .WithMessage(ValidationMessages.UserIdMustGreaterThanZero);
 
     }
 }

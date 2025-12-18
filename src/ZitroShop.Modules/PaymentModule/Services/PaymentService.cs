@@ -28,7 +28,7 @@ public class PaymentService : IPaymentService
     {
         try
         {
-            var basket = await _basketRepository.GetAsync(userId);
+            var basket = await _basketRepository.Get(userId);
             if (basket is null || !basket.Items.Any())
                 throw new InvalidOperationException("Basket is empty.");
 
@@ -43,7 +43,7 @@ public class PaymentService : IPaymentService
         }
         catch (Exception ex)
         {
-            throw new InvalidOperationException("Payment start failed.", ex);
+            throw new InvalidOperationException($"Payment start failed. {ex.Message}", ex);
         }
     }
 

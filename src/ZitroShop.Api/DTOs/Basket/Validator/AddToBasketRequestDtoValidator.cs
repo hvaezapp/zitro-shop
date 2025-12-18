@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using ZitroShop.Api.Common;
 namespace ZitroShop.Api.DTOs.Basket.Validator;
 
 public class AddToBasketRequestDtoValidator : AbstractValidator<AddToBasketRequestDto>
@@ -6,11 +7,15 @@ public class AddToBasketRequestDtoValidator : AbstractValidator<AddToBasketReque
     public AddToBasketRequestDtoValidator()
     {
         RuleFor(x => x.UserId)
-             .GreaterThan(0)
-             .WithMessage("UserId must be greater than zero");
+                .NotEmpty()
+                .WithMessage(ValidationMessages.UserIdRequired)
+                .GreaterThan(0)
+                .WithMessage(ValidationMessages.UserIdMustGreaterThanZero);
 
         RuleFor(x => x.ProductId)
-            .GreaterThan(0)
-            .WithMessage("ProductId must be greater than zero");
+                .NotEmpty()
+                .WithMessage(ValidationMessages.ProductIdRequired)
+                .GreaterThan(0)
+                .WithMessage(ValidationMessages.ProductIdMustGreaterThanZero);
     }
 }

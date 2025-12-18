@@ -1,6 +1,5 @@
 ﻿using ZitroShop.Modules.BasketModule.Contracts;
 using ZitroShop.Modules.BasketModule.Models;
-using ZitroShop.Modules.BasketModule.Repository;
 using ZitroShop.Modules.ProductModule.Contracts;
 
 namespace ZitroShop.Modules.BasketModule.Services;
@@ -23,14 +22,14 @@ public class BasketService : IBasketService
     public async Task<bool> AddProduct(long userId, long productId, CancellationToken ct)
     {
         if (await _productService.IsSold(productId, ct))
-            throw new InvalidOperationException("Product is sold.");
+            throw new InvalidOperationException("Product is solded.");
 
         await _lockService.Lock(productId);
 
         var product = await _productService.GetById(productId, ct)
                      ?? throw new InvalidOperationException("Product not found.");
 
-        var basket = await _basketRepository.GetAsync(userId)
+        var basket = await _basketRepository.Get(userId)
                      ?? new Basket { UserId = userId };
 
         basket.Items.Add(new BasketItem
@@ -40,6 +39,6 @@ public class BasketService : IBasketService
             Price = product.Price
         });
 
-        return await _basketRepository.SaveAsync(basket);
+        return await _basketRepository.Save(basket);
     }
 }
