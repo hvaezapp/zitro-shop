@@ -7,7 +7,7 @@ using ZitroShop.Modules.ProductModule.Persistence.Context;
 
 namespace ZitroShop.Modules.ProductModule.Services;
 
-public class ProductService(ProductModuleDbContext dbContext , ILockService lockService) : IProductService
+public class ProductService(ProductModuleDbContext dbContext, ILockService lockService) : IProductService
 {
     private readonly ProductModuleDbContext _dbContext = dbContext;
     public readonly ILockService _lockService = lockService;

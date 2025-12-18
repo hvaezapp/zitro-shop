@@ -1,4 +1,5 @@
 ﻿using Scalar.AspNetCore;
+using ZitroShop.Api.Registration;
 using ZitroShop.Modules.BasketModule.Registration;
 using ZitroShop.Modules.PaymentModule.Registration;
 using ZitroShop.Modules.ProductModule.Registration;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
+builder.Services.RegisterAppServices();
 builder.Services.RegisterInfraServices(configuration);
 builder.Services.RegisterProductModuleServices(configuration);
 builder.Services.RegisterBasketModuleServices();

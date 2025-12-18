@@ -4,10 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using ZitroShop.Modules.PaymentModule.Contracts;
-using ZitroShop.Modules.PaymentModule.Infrastructure.Consumers;
 using ZitroShop.Modules.PaymentModule.Persistence.Context;
 using ZitroShop.Modules.PaymentModule.Services;
-using ZitroShop.Shared.Registration;
 
 namespace ZitroShop.Modules.PaymentModule.Registration;
 
@@ -57,7 +55,7 @@ public static class ServiceRegistration
         #endregion
 
         #region ioc
-        services.AddScoped<IPaymentService , PaymentService>();
+        services.AddScoped<IPaymentService, PaymentService>();
         #endregion
 
         return services;
